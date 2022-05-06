@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="vue.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eShop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <header class="header">
+            <div class="header1">
+                <h3 class="header_name">Интернет Магазин</h3>
+                <div class="cart">
+                    <form action="#" class="search-form" @input.prevent="filter(userSearch)">
+                        <input type="text" class="serch-field" v-model="userSearch">
+                        <!-- <button class="btn-search" type="submit"> -->
+                        <i class="fas fa-search"> </i>
+                        </button>
+                    </form>
+                </div>
+                <button class="btn-basket" type="button" @click="showBasket=!showBasket">Корзина</button>
+            </div>
+
+            <div class="modal-basket  " v-show="showBasket">
+                <p v-if="!goods.length" class="cartIsEmpty">Cart is empty</p>
+                <div class="modal_content">
+
+                    <div class="modal_header">
+                        <h3 v-if="goods.length">Товары в корзине:</h3>
+                    </div>
+                    <div class="items">
+                        <div class="goods-item-basket" v-for="item of goods">
+                            <img :src='imgBasket' alt=" img">
+                            <div class="goods-item-left">
+
+                                <div class="desc-basket">
+                                    <h3 class="product-title">{{ item.product_name }} </h3>
+                                    <p class="product-single-price">₽{{ item.price }} </p>
+                                    <p class="product-quantity">Quantity:{{ item.quantity }}</p>
+                                </div>
+                            </div>
+                            <div class="rigth-block">
+                                <p class="product-price">₽{{item.quantity * item.price}}</p>
+                                <button class="del-btn" @click="remove(item)">&times;</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="products">
+                <div class="goods-item" v-for="item of filtered" :data-id="item.id_product">
+                    <img :src="img" alt="img">
+                    <div class="desc">
+                        <h3>{{ item.product_name }}</h3>
+                        <p>₽ {{ item.price }} </p>
+                        <button type="button" class="by-btn" @click="addProduct(item)" :data-id="item.id_product"
+                            :data-name="item.product_name" :data-price="item.price">Купить</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <footer class="footer">
+
+        <!-- 
+        <form action="#" class="form-serch" id="myform">
+            <div v-show="showForm">
+                <div>
+                    Name:<br><input type="text" id="name" name="name" placeholder="Your Name">
+
+                </div>
+                <div>
+                    Phone:<br><input type="tel" id="phone" name="phone" placeholder="+7(000)000-0000">
+
+                </div>
+                <div>
+                    Mail:<br><input type="email" id="mail" name="mail" placeholder="Email">
+
+                </div>
+                <button type="submit" id="btn-submit">Test</button>
+            </div>
+            <button class="btn-showCB" @click="showForm = !showForm">Обратная связь</button>
+
+        </form> -->
+    </footer>
+
+
+    <script src="vueEShop.js"> </script>
+</body>
+
+</html>
