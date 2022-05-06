@@ -31,8 +31,7 @@ let app = new Vue({
             }
         },
         addProduct(item) {
-            let productId = item.id_product
-            let find = this.goods.find(product => product.id_product === productId)
+            let find = this.goods.find(product => product.id_product === item.id_product)
 
             if (find) {
                 find.quantity++

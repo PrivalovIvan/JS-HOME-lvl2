@@ -27,7 +27,7 @@
             </div>
 
             <div class="modal-basket  " v-show="showBasket">
-                <p v-if="!goods.length" class="cartIsEmpty">Cart is empty</p>
+                <p v-if="!goods.length">Cart is empty</p>
                 <div class="modal_content">
 
                     <div class="modal_header">
@@ -55,13 +55,12 @@
         </header>
         <main>
             <div class="products">
-                <div class="goods-item" v-for="item of filtered" :data-id="item.id_product">
+                <div class="goods-item" v-for="item of filtered">
                     <img :src="img" alt="img">
                     <div class="desc">
                         <h3>{{ item.product_name }}</h3>
                         <p>₽ {{ item.price }} </p>
-                        <button type="button" class="by-btn" @click="addProduct(item)" :data-id="item.id_product"
-                            :data-name="item.product_name" :data-price="item.price">Купить</button>
+                        <button type="button" class="by-btn" @click="addProduct(item)">Купить</button>
                     </div>
                 </div>
             </div>
