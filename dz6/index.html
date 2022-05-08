@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eShop</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <header class="header">
+            <div class="header1">
+                <h3 class="header_name">Интернет Магазин</h3>
+
+            <filter-comp :dataSearch="userSearch" :filter='filter'></filter-comp>
+            <!-- <filter-comp :search="userSearch" @getProduct="filter"></filter-comp> -->
+
+                <button class="btn-basket" type="button" @click="showBasket=!showBasket">Корзина</button>
+            </div>
+            <cart :goods="goods" :img="imgBasket" :visibility="showBasket"></cart>
+        </header>
+        <main>
+            <products :products="filtered" :img="img" @add-product="addProduct"></products>
+        </main>
+    </div>
+    <footer class="footer">
+
+        <!-- 
+        <form action="#" class="form-serch" id="myform">
+            <div v-show="showForm">
+                <div>
+                    Name:<br><input type="text" id="name" name="name" placeholder="Your Name">
+
+                </div>
+                <div>
+                    Phone:<br><input type="tel" id="phone" name="phone" placeholder="+7(000)000-0000">
+
+                </div>
+                <div>
+                    Mail:<br><input type="email" id="mail" name="mail" placeholder="Email">
+
+                </div>
+                <button type="submit" id="btn-submit">Test</button>
+            </div>
+            <button class="btn-showCB" @click="showForm = !showForm">Обратная связь</button>
+
+        </form> -->
+    </footer>
+    <script src="productComp.js"></script>
+    <script src="cartComp.js"></script>
+    <script src="filterProducts.js"></script>
+    <script src="vueEShop.js"> </script>
+</body>
+
+</html>
+
+
+<!-- 
+    <div class="cart">
+                    <form action="#" class="search-form" @input.prevent="filter(userSearch)">
+                        <input type="text" class="serch-field" v-model="userSearch">
+                        <i class="fas fa-search"> </i>
+                        </button>
+                    </form>
+                </div>
+
+
+
+
+<div class="modal-basket  " v-show="showBasket">
+    <p v-if="!goods.length">Cart is empty</p>
+    <div class="modal_content">
+
+        <div class="modal_header">
+            <h3 v-if="goods.length">Товары в корзине:</h3>
+        </div>
+        <div class="items">
+            <div class="goods-item-basket" v-for="item of goods">
+                <img :src='imgBasket' alt=" img">
+                <div class="goods-item-left">
+
+                    <div class="desc-basket">
+                        <h3 class="product-title">{{ item.product_name }} </h3>
+                        <p class="product-single-price">₽{{ item.price }} </p>
+                        <p class="product-quantity">Quantity:{{ item.quantity }}</p>
+                    </div>
+                </div>
+                <div class="rigth-block">
+                    <p class="product-price">₽{{item.quantity * item.price}}</p>
+                    <button class="del-btn" @click="remove(item)">&times;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
